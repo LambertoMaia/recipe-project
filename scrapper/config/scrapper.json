@@ -1,0 +1,6 @@
+{
+  "url": "https://www.receiteria.com.br/",
+  "params": {
+    "content": "body > main > div:nth-child(2) > div > article > section > div > div > div > div:nth-child(2)"
+  }
+}
