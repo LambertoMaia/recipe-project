@@ -72,7 +72,7 @@ O valor é retornado como JSON pelo PHP mas é interpretado como OBJECT pelo jQu
 		$.each(data, function (key, value) {
 			console.log(key, value);
 		})
-	}
+	});
 
 ## Pesquisando por receita
 	
@@ -86,7 +86,7 @@ O valor é retornado como JSON pelo PHP mas é interpretado como OBJECT pelo jQu
 		    return false;
 	    }
 	    console.log(data);
-    }
+    });
 
 
 
