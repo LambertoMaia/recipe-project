@@ -26,6 +26,7 @@ $(document).ready(function () {
         }, function (data, status) {
             if (data.status == 'error') {
                 alert("Não foi possível encontrar o termo pesquisado!");
+                loadDefault();
                 return false;
             }
             
