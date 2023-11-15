@@ -223,6 +223,28 @@ class Core {
             "message"   => "A receita foi removida com sucesso!"
         ));
     }
+
+    public function get_categories() {
+        $sql    = "SELECT DISTINCT category FROM recipes";
+        $stmt   = $this->db->prepare($sql);
+        
+        if ($stmt->execute()) {
+            $fetch = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $list = array();
+            $list['categories'] = array();
+            
+            foreach($fetch as $key => $value) {
+                array_push($list['categories'], str_replace("-", " ", $value['category']));
+            }
+
+            return json_encode($list);
+        } else {
+            return json_encode(array(
+                "status"    => "error",
+                "message"   => $stmt->errorInfo()
+            ));
+        }
+    }
 }
 
 class Admin {
@@ -268,3 +290,6 @@ class Admin {
         }
     }
 }
+
+$worker = new Core();
+echo $worker->get_categories();
