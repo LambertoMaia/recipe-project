@@ -1,11 +1,11 @@
 <?php
-
+session_start();
 class Core {
     private $db;
     public function __construct() {
         // sqlite db connection
         try {
-            $this->db = new PDO("sqlite:database/db.sqlite3");
+            $this->db = new PDO("sqlite:../database/db.sqlite3");
         } catch (PDOException $e) {
             die($e->getMessage());
         }
@@ -109,6 +109,162 @@ class Core {
             return false;
         } else {
             return $stmt->fetch(PDO::FETCH_ASSOC);
+        }
+    }  
+
+    public function check_fields(array $data) {
+        $fields = [
+            "name", "category", "instructions", "ingredients",
+            "measures", "thumb", "preptime"
+        ];
+    
+        // Convert $fields to an associative array
+        $fields_assoc = array_flip($fields);
+        
+        // Check if $data contains all the keys in $fields
+        if (count(array_diff_key($fields_assoc, $data)) !== 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public function add_recipe(array $data) {
+        if (!$this->check_fields($data)) {
+            return json_encode(array(
+                "status"    => "error",
+                "message"   => "Verifique se todos os campos foram preenchidos corretamente!"
+            ));
+        }
+
+        $sql    = "INSERT INTO recipes (name, category, instructions, ingredients, measures, thumb, preptime) VALUES (:name, :category, :instructions, :ingredients, :measures, :thumb, :preptime)";
+        $stmt   = $this->db->prepare($sql);
+        $stmt->bindValue(':name', $data['name']);
+        $stmt->bindValue(':category', $data['category']);
+        $stmt->bindValue(':instructions', $data['instructions']);
+        $stmt->bindValue(':ingredients', $data['ingredients']);
+        $stmt->bindValue(':measures', $data['measures']);
+        $stmt->bindValue(':thumb', $data['thumb']);
+        $stmt->bindValue(':preptime', $data['preptime']);
+
+        if(!$stmt->execute()) {
+            return json_encode(array(
+                "status" => "error",
+                "message" => "Error ao inserir receita no banco de dados!"
+            ));
+        }
+
+        return json_encode(array(
+            "status" => "ok",
+            "message" => "Receita inserida no banco de dados"
+        ));
+    }
+
+    public function edit_recipe(int $id, array $data) {
+        if (!$this->check_fields($data)) {
+            return json_encode(array(
+                "status"    => "error",
+                "message"   => "Verifique se todos os campos foram preenchidos corretamente"
+            ));
+        }
+
+        $sql = "UPDATE recipes SET = name = :name, category = :category, instructions = :instructions, ingredients = :ingredients, measures = :measures, thumb = :thumb, preptime = :preptime WHERE id = :id";
+        $prepare = $this->db->prepare($sql);
+        $prepare->bindValue(":name", $data['name']);
+        $prepare->bindValue(":category", $data['category']);
+        $prepare->bindValue(":instructions", $data['instructions']);
+        $prepare->bindValue(":ingredients", $data['ingredients']);
+        $prepare->bindValue(":measures", $data['measures']);
+        $prepare->bindValue(":thumb", $data['thumb']);
+        $prepare->bindValue(":preptime", $data['preptime']);
+
+        if (!$prepare->execute()) {
+            return json_encode(array(
+                "status"    => "error",
+                "message"   => "Ocorreu um error ao salvar as informações!",
+                "sql"       => $prepare->errorInfo()
+            ));
+        }
+
+        return json_encode(array(
+            "status"    => "ok",
+            "message"   => "Informações da receita foram alteradas com sucesso!"
+        ));
+    }
+
+    public function remove_recipe(int $id) {
+        if(empty($id)) {
+            return json_encode(array(
+                "status"    => "error",
+                "message"   => "Não foi possível encontrar o ID"
+            ));
+        }
+
+        if(!isset($_SESSION['admin_login'])) {
+            return json_encode(array(
+                "status"    => "error",
+                "message"   => "Essa ação não é permitida"
+            ));
+        }
+
+        $sql = "DELETE FROM recipes WHERE id = :id";
+        $prepare = $this->db->prepare($sql);
+        $prepare->bindValue(":id", $id);
+        
+        if (!$prepare->execute()) {
+            return json_encode(array(
+                "status"    => "error",
+                "message"   => "Não foi possível remover esta receita",
+            ));
+        }
+
+        return json_encode(array(
+            "status"    => "ok",
+            "message"   => "A receita foi removida com sucesso!"
+        ));
+    }
+}
+
+class Admin {
+    private $username = "admin";
+    private $password = "admin";
+
+    public function login(string $username, string $password) {
+        if (empty($username) || empty($password)) {
+            return json_encode(array(
+                "status" => "error",
+                "message" => "Senha e/ou usuário incorretos"
+            ));
+        }
+
+        if (!isset($_SESSION['admin_login'])) {
+            if ($username === $this->username && $password === $this->password) {
+                $_SESSION['admin_login'] = 1;
+                return json_encode(array(
+                    "status" => "ok",
+                    "message" => "password"
+                ));
+            } else {
+                return json_encode(array(
+                    "status" => "error",
+                    "message" => "Usuário e/ou senha inválido!"
+                ));
+            }
+        } else {
+            return json_encode(array(
+                "status" => "ok",
+                "message" => "session"
+            ));
+        }
+    }
+
+    public function logout() {
+        if (isset($_SESSION['admin_login'])) {
+            session_destroy();
+            return json_encode(array(
+                "status" => "ok",
+                "message" => null
+            ));
         }
     }
 }
