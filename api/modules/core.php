@@ -5,7 +5,7 @@ class Core {
     public function __construct() {
         // sqlite db connection
         try {
-            $this->db = new PDO("sqlite:../database/db.sqlite3");
+            $this->db = new PDO("sqlite:database/db.sqlite3");
         } catch (PDOException $e) {
             die($e->getMessage());
         }
@@ -290,6 +290,3 @@ class Admin {
         }
     }
 }
-
-$worker = new Core();
-echo $worker->get_categories();
