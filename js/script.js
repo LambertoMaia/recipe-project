@@ -2,7 +2,15 @@ $(document).ready(function () {
 
     var lastSearch = "";
 
-    $("#searchButton").click(function () {
+    $("#searchInput").on("keyup", function (e) {
+        if (e.keyCode == 13) {
+            searchMeal();
+        }
+    })
+
+    $("#searchButton").click(searchMeal);
+
+    function searchMeal() {
         var value = $("#searchInput").val();
         
         if (value == "" || value == null) {
@@ -40,10 +48,8 @@ $(document).ready(function () {
                 `;
                 mealList.appendChild(mealItem);
             })
-
         })
-
-    })
+    }
 
     function loadDefault() {
         $("#mealList").html(""); 
