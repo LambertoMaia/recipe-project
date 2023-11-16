@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -11,22 +11,12 @@
 <body>
 
     <header>
-        
-        <img src="logo tipo mundo gastro.png" alt="Mundo Gastro"> 
-        <div class="search-container">
-        <input type="text" id="search-input" class="search" placeholder="Pesquise por um prato ou ingredientes...">
-        <button id="search-button">Pesquisar</button>
+        <h1>Receitas</h1>
+        <div class="search">
+            <input type="text" id="searchInput" placeholder="Pesquise por um prato ou ingredientes...">
+            <button id="searchButton">Pesquisar</button>
         </div>
     </header>
-
-    <section>
-        <div class="background-section">
-            <video src="vid/Show Reel.mp4"autoplay loop muted></video>
-        </div>
-        <div class="box">
-            </div>
-        </div>
-    </section>
 
     <div id="mealList" class="meal-list"></div>
     <div class="modal-container">

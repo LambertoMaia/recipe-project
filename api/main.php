@@ -14,7 +14,7 @@ if ($request_method != 'POST' && $request_method != 'GET') {
 }
 
 if ($request_method == 'GET') {
-    $available_actions = ['get_recipe', 'get_recipes', 'search'];
+    $available_actions = ['get_recipe', 'get_recipes', 'search', 'check_permission'];
 
     if (!isset($_GET['action'])) {
         echo json_encode(array('status' => 'error', 'message' => 'No action specified'));
@@ -88,4 +88,34 @@ if ($request_method == 'GET') {
 
         echo json_encode($worker->get_recipes($limit, $random));
     }
+
+    if($action == 'check_permission') {
+        $admin = new Admin();
+        $permission = $admin->check_permission();
+
+        echo $permission;
+    }
+}
+
+if ($request_method === "POST") {
+    $action = $_POST['action'];
+
+    if ($action === "login") {
+        if(!isset($_POST['username']) || !isset($_POST['password'])) {
+            return json_encode(array(
+                "status"    => "error",
+                "message"   => "Verifique se todos os campos foram preenchidos corretamente!"
+            ));
+        } 
+
+        $admin = new Admin();
+        echo $admin->login($_POST['username'], $_POST['password']);
+    }
+
+    if ($action === "add_recipe") {
+        $data = $_POST['values'];
+
+        echo $worker->add_recipe($data);
+    }
+
 }

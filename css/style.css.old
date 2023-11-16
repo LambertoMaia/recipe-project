@@ -1,48 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-header img {
-    width: 250px; 
-    height: auto; 
-}
-
-section{
-    width: 100%;
-    height: 800px;
-    position: center;
-    margin-bottom: 5px;
-}
-
-section div.background-section{
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    z-index: 2;
-}
-
-section div.background-section video{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-}
-
-section div.box{
-    width: 50%;
-    height: 30%;
-    position: relative;
-    z-index: 1;
-    background: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-video {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
-    border: 10px solid #33FF29; 
-    border-radius: 30px;
-}
-
 *{
     margin: 0;
     padding: 0;
@@ -51,15 +8,14 @@ video {
 }
 
 body{
-    background-color: #fff;
+    background-color: #f0f0f0;
+}
 
- }
 header{
-    background-color:#fff;
+    background-color: #333;
     color: #fff;
     text-align: center;
-    padding: 5px 5px 2.5px;
-    margin: 0.5%;
+    padding: 20px 20px 30px;
 }
 
 h1{
@@ -68,48 +24,35 @@ h1{
     margin-bottom: 20px;
 }
 
-header .search{
+.search{
     display: flex;
     justify-content: center;
-    align-items: center;
-    width: 60%;
-    margin: 0 auto;
-    border-radius: 20px;
-    border: 1px solid #FF7A1C;
 }
 
-header .search-container {
-    display: flex;
-    justify-content: space-between; 
-    align-items: center; 
-    width: 70%;
-    margin: 0 auto;
-    border-radius: 20px;
+.search input{
+    padding: 10px;
     border: none;
+    width: 40%;
+    font-size: 15px;
+    outline: none;
+    border-radius: 10px 0 0 10px;
 }
 
-header #search-input{
-    padding: 10px 30px; 
-    width: 70%; 
-    font-size: 16px; 
-    border-radius: 30px; 
-    margin-right: 10px;
-}
-
-header #search-button{
-    padding: 10px ;
-    border: 1px solid #FF7A1C;
-    width: 15%;
+.search button{
+    padding: 10px 20px;
+    background-color: #ff5722;
+    border: none;
+    width: 10%;
     cursor: pointer;
     font-size: 15px;
-    color: #FF7A1C;
+    color: #fff;
     font-weight: 600;
-    border-radius: 40px;
+    border-radius: 0 10px 10px 0;
     transition: all 0.3s ease;
 }
 
-#search-button{
-    background-color:#E3E6D1;
+.search button:hover{
+    background-color: #e64a19;
 }
 
 .meal-list{
@@ -148,13 +91,14 @@ header #search-button{
     font-size: 17px;
     font-weight: 600;
 }
+
 .modal-container{
     display: none;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #33FF29;
+    background-color: #fff;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     z-index: 1000;
@@ -168,7 +112,7 @@ header #search-button{
     background: none;
     border: none;
     cursor: pointer;
-    color: #FF7A1C;
+    color: #333;
     width: 100%;
     text-align: right;
     margin-bottom: 16px;
@@ -176,7 +120,7 @@ header #search-button{
 }
 
 .modal-container .close-button:hover{
-    color: #FF7A1C;
+    color: #ff5722;
 }
 
 .meal-details-content{
@@ -216,13 +160,33 @@ header #search-button{
     display: block;
     margin: 0 auto 40px;
     border-radius: 10px;
-    border: 1px solid #33FF29;
+    border: 1px solid #ccc;
     box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
 }
 
+.recipe-video{
+    text-align: center;
+    margin-top: 10px;
+}
 
+.recipe-video a{
+    padding: 10px 20px;
+    background-color: #ff5722;
+    border: none;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
 
-@media screen and (max-width: 980px) {
+.recipe-video a:hover{
+    background-color: #e64a19;
+}
+
+@media screen and (width < 980px) {
     
     .meal-item{
         flex-basis: calc(50% - 20px);
@@ -239,7 +203,7 @@ header #search-button{
     }
 }
 
-@media screen and (max-width: 540px) {
+@media screen and (width < 540px) {
     
     .meal-item{
         flex-basis: calc(100% - 20px);
