@@ -19,6 +19,12 @@ $(document).ready(function () {
         var imagem      = $("#imagem").val();
         var preparo     = $("#preparo").val();
 
+        // Verificação dos campos
+        if (receitaNome == "" || categoria == "" || instrucoes == "" || ingredientes == "" || rendimento == "" || imagem == "" || preparo == "") {
+            alert("Preencha todos os campos!");
+            return false;
+        }
+
         $.post("/api/main.php", {
             action: 'add_recipe',
             values: {

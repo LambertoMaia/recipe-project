@@ -76,6 +76,7 @@ header .search{
     margin: 0 auto;
     border-radius: 20px;
     border: 1px solid #FF7A1C;
+
 }
 
 header .search-container {
@@ -106,6 +107,7 @@ header #search-button{
     font-weight: 600;
     border-radius: 40px;
     transition: all 0.3s ease;
+    background-color: transparent;
 }
 
 #search-button{
