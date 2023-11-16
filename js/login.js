@@ -1,5 +1,4 @@
 $(document).ready(function () {
-
     function userlogin() {
         var username = $("#usernameField").val();
         var password = $("#passwordField").val();

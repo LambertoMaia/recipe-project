@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    $("body").hide();
     // Checking permission
     $.get("/api/main.php", {
         action: "check_permission"
@@ -8,6 +9,8 @@ $(document).ready(function () {
             window.location.href = "/index.html";
             return false;
         }
+
+        $("body").show();
     })
 
     $("#submitReceita").click(function () {
