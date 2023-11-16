@@ -1,0 +1,83 @@
+
+* {
+    box-sizing: border-box;
+}
+
+.loginForm {
+    margin: 10em auto;   
+}
+
+.loginForm input {
+    width: 100%;
+    margin-top: 0.8em;
+}
+
+.loginForm textarea {
+    width: 100%;
+    margin-top: 0.8em;
+    border: none;
+    border-radius: 3px;
+    padding: 0.7em;
+    font-size: 18px;
+    background-color: rgb(235, 235, 235);
+}
+
+.loginForm input[type=text], .loginForm input[type=password] {
+    border-radius: 3px;
+    border: none;
+    padding: 0.7em;
+    font-size: 18px;
+    background-color: rgb(235, 235, 235);
+}
+
+.loginForm input[type=submit] {
+    padding: 0.5em;
+    border-radius: 3px;
+    border: none;
+    background-color: #ff5722;
+    color: #fff;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 1em;
+}
+
+.loginForm input[type=submit]:hover {
+    background-color: #e64a19;
+}
+
+@media only screen 
+   and (min-width : 200px) {
+    .loginForm {
+        width: 80%;
+    }
+}
+
+@media only screen 
+   and (min-width : 320px) {
+    .loginForm {
+        width: 80%;
+    }
+}
+
+@media only screen 
+   and (min-width : 768px) {
+    .loginForm {
+        width: 60%;
+    }
+}
+
+@media only screen 
+   and (min-width : 1200px) {
+   .loginForm {
+        width: 50%;
+   }
+}
+
+@media only screen 
+   and (min-width : 1600px) {
+    .loginForm {
+        width: 30%;
+    }
+}

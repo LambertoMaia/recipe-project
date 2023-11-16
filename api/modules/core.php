@@ -289,4 +289,16 @@ class Admin {
             ));
         }
     }
+
+    public function check_permission() {
+        if(isset($_SESSION['admin_login'])) {
+            return json_encode(array(
+                "status" => "ok"
+            ));
+        } else {
+            return json_encode(array(
+                "status" => "error"
+            ));
+        }
+    }
 }
