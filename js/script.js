@@ -43,7 +43,7 @@ $(document).ready(function () {
                 mealItem.classList.add('meal-item');
                 mealItem.dataset.id = value.id;
                 mealItem.innerHTML = `
-                <img src="${value.thumb}" alt="${value.name}" onclick="getMeal(${value.id})">
+                <img src="${value.thumb}" alt="${value.name}">
                 <h3>${value.name}</h3>
                 `;
                 mealItem.addEventListener('click', function() {
@@ -68,7 +68,7 @@ $(document).ready(function () {
                 mealItem.classList.add('meal-item');
                 mealItem.dataset.id = value.id;
                 mealItem.innerHTML = `
-                <img src="${value.thumb}" alt="${value.name}" onclick="getMeal(${value.id})">
+                <img src="${value.thumb}" alt="${value.name}">
                 <h3>${value.name}</h3>
                 `;
                 mealItem.addEventListener('click', function() {
@@ -76,9 +76,6 @@ $(document).ready(function () {
                 });
                 mealList.appendChild(mealItem);
             })
-        })
-        $("body").on("click", "#recipeCloseBtn", function () {
-            document.querySelector(".modal-container").style.display = 'none';
         })
     }
 
@@ -112,6 +109,9 @@ $(document).ready(function () {
             `;
             modalContainer.style.display = 'block';
         });
+        $("body").on("click", "#recipeCloseBtn", function () {
+            document.querySelector(".modal-container").style.display = 'none';
+        })
     }
 
 
