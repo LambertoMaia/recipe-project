@@ -2,17 +2,17 @@ $(document).ready(function () {
 
     var lastSearch = "";
 
-    $("#searchInput").on("keyup", function (e) {
+    $("#search-input").on("keyup", function (e) {
         if (e.keyCode == 13) {
             searchMeal();
         }
     })
 
-    $("#searchButton").click(searchMeal);
+    $("#search-button").click(searchMeal);
 
     function searchMeal() {
-        var value = $("#searchInput").val();
-        
+        var value = $("#search-input").val();
+        console.log("value", value);
         if (value == "" || value == null) {
             alert("Por favor, digite um termo de pesquisa!");
             //loadDefault();
@@ -92,10 +92,27 @@ $(document).ready(function () {
             var mealDetailsContent = document.querySelector(".meal-details-content");
             var modalContainer = document.querySelector(".modal-container");
             var meal = data;
-    
+            
+            console.log(data.ingredients);
+
+            var ingredients = $("<div></div>");
+            ingredients.addClass("ingredients");
+            
+            ingredients.prepend("<h3>Ingredientes:</h3>");
+
+            var ingredients_list = $("<ul></ul>");
+            ingredients_list.addClass("ingredients-list");
+
+            $.each(data.ingredients, function (key, value) {
+                ingredients_list.append("<li>" + value + "</li>");
+                ingredients.append(ingredients_list);
+            })
+
+            var category = meal.category.replace(/-/g, " ");
+
             mealDetailsContent.innerHTML = `
                 <h2 class="recipe-title">${meal.name}</h2>
-                <p class="recipe-category">${meal.category}</p>
+                <p class="recipe-category">${category}</p>
                 <div class="recipe-instruct">
                     <h3>Instruções:</h3>
                     <p>${meal.instructions}</p>
@@ -108,6 +125,9 @@ $(document).ready(function () {
                 </div>
             `;
             modalContainer.style.display = 'block';
+
+            $(".recipe-instruct").append(ingredients);
+
         });
         $("body").on("click", "#recipeCloseBtn", function () {
             document.querySelector(".modal-container").style.display = 'none';

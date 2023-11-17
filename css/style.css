@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
+.ingredients-list {
+    margin-left: 2em;
+    margin-bottom: 1.5em;
+}
+.ingredients h3 {
+    margin-bottom: 1em;
+}
+
 header img {
     width: 250px; 
     height: auto; 
@@ -156,7 +164,7 @@ header #search-button{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #33FF29;
+    background-color: #FF7A1C;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     z-index: 1000;
@@ -170,7 +178,7 @@ header #search-button{
     background: none;
     border: none;
     cursor: pointer;
-    color: #FF7A1C;
+    color: white;
     width: 100%;
     text-align: right;
     margin-bottom: 16px;
@@ -178,7 +186,7 @@ header #search-button{
 }
 
 .modal-container .close-button:hover{
-    color: #FF7A1C;
+    color: #979797;
 }
 
 .meal-details-content{
@@ -248,4 +256,18 @@ header #search-button{
         max-width: calc(100% - 20px);
     }
 
+}
+
+footer {
+    background-color: #33FF29;
+    color: #fff;
+    padding: 30px 0;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.footer-content {
+    max-width: 1200px;
+    text-align: center;
+    margin: 0 auto !important;
 }

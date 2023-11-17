@@ -108,7 +108,9 @@ class Core {
         if(!$run) {
             return false;
         } else {
-            return $stmt->fetch(PDO::FETCH_ASSOC);
+            $fetch = $stmt->fetch(PDO::FETCH_ASSOC);
+            $fetch['ingredients'] = explode(",", trim($fetch['ingredients']));
+            return $fetch;
         }
     }  
 
