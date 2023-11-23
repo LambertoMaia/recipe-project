@@ -1,0 +1,15 @@
+{
+    "name": "lambe/recipe",
+    "description": "Recipe website",
+    "type": "project",
+    "license": "ISC",
+    "autoload": {
+        "psr-4": {
+            "Lambe\\Recipe\\": "src/"
+        }
+    },
+    "require": {
+        "twig/twig": "^3.8",
+        "klein/klein": "^2.1"
+    }
+}

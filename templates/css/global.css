@@ -4,7 +4,8 @@
 }
 
 .loginForm {
-    margin: 10em auto;   
+    margin: 10em auto; 
+    text-align: center;
 }
 
 .loginForm input {
@@ -45,6 +46,11 @@
 
 .loginForm input[type=submit]:hover {
     background-color: #e64a19;
+}
+
+.loginForm span {
+    display: inline-block;
+    margin: 0 auto;
 }
 
 @media only screen 

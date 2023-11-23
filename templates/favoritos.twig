@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="templates/css/style.css">
+    <title>Mundo Gastro</title>
+</head>
+
+<body>
+    <header>
+        <img src="templates/images/logo.png" alt="Mundo Gastro"> 
+
+        <h1>Favoritos</h1>
+        
+        {% if loggedIn %}
+            <p class='center'>Aqui está sua lista de receitas favoritas</p>
+        {% else %}
+            <p class='center'>Você precisa fazer o login para ver seus favoritos</p>
+        {% endif %}
+
+    </header>
+
+    {% include "inc/menu.twig" %}
+
+    <div id="mealList" class="meal-list">
+        {% for meal in favourites %}
+            {% if meal.id %}
+                <div class='meal-item' dataset-id='{{ meal.id }}'>
+                    <img src='{{ meal.thumb }}' alt='{{ meal.name }}'>
+                    <h3>{{ meal.name }}</h3>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+    
+    <div id="mealList" class="meal-list"></div>
+    <div class="modal-container">
+        <button id="recipeCloseBtn" class="close-button">&times;</button>
+        <div class="meal-details-content">
+        </div>
+    </div>
+
+    
+    <script src="templates/js/jquery-3.7.1.min.js"></script>
+    <script src="templates/js/script.js"></script>
+
+    <footer>
+        <div class="footer-content">
+            <p>© 2023 Mundo Gastro</p>
+            <p>Contato: contato@mundo-gastro.com</p>
+        </div>
+    </footer>
+</body>
+</html>

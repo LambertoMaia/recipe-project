@@ -1,3 +1,5 @@
 scrapper/venv
 scrapper/.idea
 scrapper/__pycache__
+
+/vendor/

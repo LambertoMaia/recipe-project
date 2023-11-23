@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="templates/css/style.css">
+    <title>Mundo Gastro</title>
+</head>
+
+<body>
+    
+    <header>
+        
+        <img src="templates/images/logo.png" alt="Mundo Gastro"> 
+
+        <h1>Mundo Gastro</h1>
+        <p>
+            Bem-vindo ao MundoGastro seu destino culinário online para explorar um mundo de sabores e descobrir inspiração na arte da culinária. Navegue por nosso vasto acervo de receitas deliciosas, cuidadosamente selecionadas para atender a todos os paladares e níveis de habilidade na cozinha.
+        </p>
+        <p>
+            Deixe-se levar por uma jornada gastronômica única, onde cada página revela segredos culinários, dicas de chefs renomados e pratos irresistíveis. Desde receitas clássicas até inovações contemporâneas, nosso site é um tesouro de experiências culinárias que o convida a experimentar, criar e saborear.
+        </p>
+        <p>
+            Explore categorias que abrangem desde entradas exquisitas até sobremesas decadentes, passando por pratos principais que elevam o prazer da gastronomia. Envolva-se em narrativas inspiradoras sobre a origem dos pratos e a paixão por trás de cada receita, mergulhando em um universo onde a comida é mais do que uma simples refeição, é uma expressão de arte.
+        </p>
+        <p>
+            Além das receitas, oferecemos dicas práticas, guias de ingredientes e sugestões de harmonização para transformar suas experiências culinárias em momentos inesquecíveis. Seja você um chef experiente ou um entusiasta culinário iniciante, nosso objetivo é nutrir sua paixão pela comida e inspirar sua criatividade na cozinha.
+        </p>
+        <p>
+            Sinta-se em casa no MundoGastro, onde a gastronomia é celebrada em sua forma mais autêntica e deliciosa. Prepare-se para uma jornada gastronômica emocionante enquanto exploramos juntos o mundo de sabores, aromas e texturas que tornam a culinária uma verdadeira celebração da vida. Bon appétit!
+        </p>
+       
+    </header>
+   
+    {% include 'inc/menu.twig' %}
+
+
+    <div class="most-rated">
+        <h3>Confira as receitas mais populares</h3>
+    </div>
+        
+    <div id="mealList" class="meal-list">
+      <div id="mealList" class="meal-list">
+        {% for meal in recipes %}
+            <div class='meal-item' dataset-id='{{ meal.id }}'>
+                <img src='{{ meal.thumb }}' alt='{{ meal.name }}'>
+                <h3>{{ meal.name }}</h3>
+            </div>
+        {% endfor %}
+    </div>
+    </div>
+    <div class="modal-container">
+        <button id="recipeCloseBtn" class="close-button">&times;</button>
+        <div class="meal-details-content">
+        </div>
+    </div>
+
+    <script src="templates/js/jquery-3.7.1.min.js"></script>
+    <script src="templates/js/script.js"></script>
+
+    <footer>
+        <div class="footer-content">
+            <p>© 2023 Mundo Gastro</p>
+            <p>Contato: contato@mundo-gastro.com</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="templates/css/style.css">
+    <link rel="stylesheet" href="templates/css/global.css">
+    <title>Mundo Gastro - Cadastro</title>
+</head>
+
+<body>
+    <header>
+        <img src="templates/images/logo.png" alt="Mundo Gastro"> 
+    </header>
+    
+    {% include "inc/menu.twig" %}
+
+    <div class="loginForm">
+        <h3>Efetuar Cadastro</h3>
+        <input type="text" id="usernameField" name="username" placeholder="Usuário">
+        <input type="password" id="passwordField" name="password" placeholder="Senha">
+        <input type="text" name="email" id="emailField" placeholder="Endereço de e-mail">
+        <input type="submit" id="registrationSubmit" value="Cadastrar">
+    </div>
+</body>
+
+<script src="templates/js/jquery-3.7.1.min.js"></script>
+<script src="templates/js/login.js"></script>
+</html>

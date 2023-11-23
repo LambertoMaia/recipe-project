@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="templates/css/style.css">
+    <title>Mundo Gastro</title>
+</head>
+<body>
+    <header>        
+        <img src="templates/images/logo.png" alt="Mundo Gastro"> 
+        <div class="search-container">
+            <input type="text" id="search-input" class="search" placeholder="Pesquise por um prato ou ingredientes...">
+            <button id="search-button">Pesquisar</button>
+        </div>
+    </header>
+
+    {% include 'inc/menu.twig' %}
+
+    <div id="mealList" class="meal-list">
+        {% for meal in recipes %}
+            <div class='meal-item' dataset-id='{{ meal.id }}'>
+                <img src='{{ meal.thumb }}' alt='{{ meal.name }}'>
+                <h3>{{ meal.name }}</h3>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="modal-container">
+        <button id="recipeCloseBtn" class="close-button">&times;</button>
+        <div class="meal-details-content">
+        </div>
+    </div>
+
+
+    <footer>
+        <div class="footer-content">
+            <p>© 2023 Mundo Gastro</p>
+            <p>Contato: contato@mundo-gastro.com</p>
+        </div>
+    </footer>
+
+    <script src="templates/js/jquery-3.7.1.min.js"></script>
+    <script src="templates/js/script.js"></script>
+</body>
+</html>
